@@ -1,0 +1,66 @@
+---
+title: User
+---
+
+import { Badge } from '@astrojs/starlight/components';
+
+## Usernames
+Flysend has the following restrictions for @handles:
+- Handles must be between 2 and 32 characters long.
+- Handles cannot contain words `flysend`, `safety`, `kys`, `support`, `spacey`, `everyone` and `here`.
+- Also handles cannot contain the following characters `@`, `:`, etc.
+
+## Structure
+
+| Field    | Type | Description |
+| -------- | ------- | ----------- |
+| id  | string    | Snowflake unique user ID | 
+| username | string?     | User's display name, if it set |
+| handle    | string    | Unique username |
+| createdAt | DateTime | User's account creation date |
+| avatar | string? | Base64 user avatar
+| bio | string? | User's bio, if it set
+| bot | boolean | Whether the user is bot or not
+
+This is the example user object
+
+```json
+{
+  "id": "290898364713832451",
+  "username": "Ninjapp",
+  "handle": "ninjapp",
+  "createdAt": "2024-07-11T17:26:14.804Z",
+  "status": "offline",
+  "bio": "something about me",
+  "email": "ninjapp@flysend.tpm.pw"
+}
+```
+
+### Get current user
+
+<Badge text="GET" variant="success" size="medium" /> `/users/@me`
+
+Returns a user object of requester's account. Requires a Bearer token
+
+### Get user
+
+<Badge text="GET" variant="success" size="medium" /> `/users/{user.id}`
+
+Returns a user object for a given User ID
+
+### Modify current user
+
+<Badge text="PATCH" variant="tip" size="medium" /> `/users/@me`
+
+Modify the requester's account. Requires a Bearer token
+
+**JSON params**
+
+| Field    | Type | Description |
+| -------- | ------- | ----------- |
+| username | string?     | User's display name |
+| handle    | string    | Unique username |
+| avatar | string? | If passed, modifies the user's avatar
+| bio | string? | User's bio
+
+If you want to remove the displayed name or bio, you may write just `null` without quotation marks
