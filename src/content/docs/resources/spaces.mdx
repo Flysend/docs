@@ -2,4 +2,67 @@
 title: Spaces
 ---
 
-soon
+import { Badge } from '@astrojs/starlight/components';
+
+## Structure
+| Field    | Type | Description |
+| -------- | ------- | ----------- |
+| id | string | Snowflake unique space ID |
+| name | string | Space name |
+| ownerID | string | Space owner's ID |
+| description | string? | Space description, if set |
+| icon | string? | Space icon hash, if set |
+| createdAt | DateTime | Space creation date |
+
+Example space object:
+
+```json
+{
+  "id": "189743571719569409",
+  "name": "Flysend Official",
+  "ownerID": "189742982256279552",
+  "description": "This is the official space of Flysend",
+  "icon": null,
+  "createdAt": "2023-10-06T14:13:12.764Z"
+}
+```
+
+## Get space
+
+<Badge text='GET' variant='success' size='medium' /> `/spaces/{id}`
+
+Returns a space object if requester is the member of this space.
+
+## Create space
+
+<Badge text='POST' variant='note' size='medium' /> `/spaces/`
+
+Creates a new space.
+
+**JSON params**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | string | New space name |
+| description | string? | New space description |
+
+
+## Modify space
+
+<Badge text='PATCH' variant='tip' size='medium' /> `/spaces/{id}`
+
+Modifies the space.
+
+**JSON params**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | string | New space name |
+| description | string? | New space description |
+| icon | string? | New space icon, encoded in base64 |
+
+## Delete space
+
+<Badge text='DELETE' variant='danger' size='medium' /> `/spaces/{id}`
+
+Deletes the space. The requester should be the owner of space to perform this action.
