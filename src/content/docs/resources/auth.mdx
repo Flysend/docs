@@ -1,0 +1,30 @@
+---
+title: Auth
+---
+
+import { Badge } from '@astrojs/starlight/components';
+
+## Login
+
+<Badge text='POST' variant='note' size='medium' /> `/auth/login`
+
+Returns existing user's token if account exists. JSON params:
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| email | string | Account e-mail |
+| password | string | Account password |
+
+## Register
+
+<Badge text='POST' variant='note' size='medium' /> `/auth/register`
+
+Registers new user and returns token. JSON params:
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| email | string | New user's e-mail |
+| password | string | New user's password |
+| username | string? | New user's display name |
+| handle | string | New user's handle |
+| inviteKey | string | Beta key |
