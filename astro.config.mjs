@@ -28,6 +28,9 @@ export default defineConfig({
     }, {
       label: 'Resources',
       items: [{
+        label: 'Gateway',
+        slug: 'resources/gateway'
+      }, {
         label: 'Auth',
         slug: 'resources/auth'
       }, {

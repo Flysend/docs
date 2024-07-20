@@ -1,0 +1,44 @@
+---
+title: Gateway
+---
+
+import { Badge } from '@astrojs/starlight/components';
+
+Flysend currently uses Socket.io server for gateway, so you should use Socket.io for your Flysend client.
+
+## Gateway events
+
+| Event | Description |
+| ----- | ----------- |
+| userUpdate | User object changed |
+| statusUpdate | User status changed |
+| spaceCreate | User joined or created space |
+| spaceUpdate | Space object changed |
+| spaceDelete | User left the space or space deleted |
+| spaceMemberAdd | Member joined the space |
+| spaceMemberUpdate | Member object changed |
+| spaceMemberRemove | Member left the space |
+| inviteCreate | New space invite created |
+| chatCreate | New chat created |
+| chatUpdate | Chat object changed |
+| chatDelete | Chat deleted |
+| typingStart | User sent typing status |
+| messageCreate | New message created |
+| messageEdit | Message edited |
+| messageDelete | Message deleted |
+| relationshipAdd | User sent a friend request to other user or blocked them |
+| relationshipUpdate | Relationship object changed |
+| relationshipDelete | Relationship deleted |
+
+
+## Get gateway URL
+
+<Badge text='GET' variant='success' size='medium' /> `/gateway`
+
+Returns a gateway URL. This endpoint doesn't require the Authorization header. Example JSON:
+
+```json
+{
+  "url": "wss://flysend.tpm.pw:81"
+}
+```

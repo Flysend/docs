@@ -37,7 +37,7 @@ Returns a space object if requester is the member of this space.
 
 <Badge text='POST' variant='note' size='medium' /> `/spaces/`
 
-Creates a new space.
+Creates a new space. Returns a new space object on success.
 
 **JSON params**
 
@@ -51,7 +51,7 @@ Creates a new space.
 
 <Badge text='PATCH' variant='tip' size='medium' /> `/spaces/{id}`
 
-Modifies the space.
+Modifies the space. Returns an updated space object on success.
 
 **JSON params**
 
@@ -65,4 +65,10 @@ Modifies the space.
 
 <Badge text='DELETE' variant='danger' size='medium' /> `/spaces/{id}`
 
-Deletes the space. The requester should be the owner of space to perform this action.
+Deletes the space. The requester should be the owner of space to perform this action. Returns a 204 response on success.
+
+## Leave space
+
+<Badge text='POST' variant='note' size='medium' /> `/spaces/{id}/leave`
+
+Leave a space. Returns a 204 response on success. Requester shouldn't be the owner of space to perform this action.
