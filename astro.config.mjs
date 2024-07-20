@@ -36,6 +36,9 @@ export default defineConfig({
       }, {
         label: 'Spaces',
         slug: 'resources/spaces'
+      }, {
+        label: 'Chats',
+        slug: 'resources/chats'
       }]
     }]
   }), tailwind({

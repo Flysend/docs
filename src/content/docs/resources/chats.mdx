@@ -1,0 +1,74 @@
+---
+title: Chats
+---
+
+import { Badge } from '@astrojs/starlight/components';
+
+## Structure
+| Field    | Type | Description |
+| -------- | ------- | ----------- |
+| id | string | Snowflake unique chat ID |
+| type | int | Chat's type |
+| name | string | Chat name |
+| spaceID | string? | ID of the space, which the chat belong to |
+| description | string? | Chat description, if set |
+| icon | string? | Chat icon hash, if set |
+| createdAt | DateTime | Chat creation date |
+| nsfw | boolean | Whether the chat is age-restricted or not |
+
+Example chat object:
+
+```json
+{
+  "id": "291161127205900343",
+  "type": 1,
+  "name": "General",
+  "description": null,
+  "spaceID": "291161107903713334",
+  "subspaceID": null,
+  "recipients": null,
+  "icon": null,
+  "createdAt": "2024-07-12T10:50:22.239Z",
+  "nsfw": false,
+}
+```
+
+## Get chat
+
+<Badge text='GET' variant='success' size='medium' /> `/chats/{id}`
+
+Returns a chat object
+
+## Create chat
+
+<Badge text='POST' variant='note' size='medium' /> `/chats/`
+
+Creates a new chat.
+
+**JSON params**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| spaceID | string? | ID of the space, which the new chat belong to |
+| name | string | New chat name |
+| type | int | New chat type |
+
+**Chat types**
+Type | Description |
+------- | ----------- |
+| 1 | Text chat |
+| 2 | Voice chat (unrealized) |
+| 3 | Direct Messages text chat |
+
+## Modify chat
+
+<Badge text='PATCH' variant='tip' size='medium' /> `/chats/{id}`
+
+Modifies the chat. The requester should be the owner of space to perform this action.
+
+**JSON params**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| name | string | New chat name |
+| icon | string? | New chat icon, encoded in base64 |

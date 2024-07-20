@@ -64,3 +64,17 @@ Modify the requester's account. Requires a Bearer token
 | bio | string? | User's bio
 
 If you want to remove the displayed name or bio, you may write just `null` without quotation marks
+
+### Update user status
+
+<Badge text='POST' variant='note' size='medium' /> `/users/@me/status`
+
+Updates the requester's user status. The valid statuses are `online`, `idle`, `dnd` (Do not disturb) and `offline`
+
+Example:
+```json
+{
+  "status": "dnd"
+}
+```
+After a successful request, it returns 204
