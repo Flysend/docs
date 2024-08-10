@@ -1,0 +1,54 @@
+---
+title: Messages
+---
+
+import { Badge } from '@astrojs/starlight/components';
+
+## Structure
+| Field    | Type | Description |
+| -------- | ------- | ----------- |
+| id | string | Snowflake unique message ID |
+| authorID | string | Message author's ID |
+| content | string | Pretty self explanatory |
+| chatID | string | ID of the chat |
+| chat | Chat | Chat object |
+| spaceID | string? | ID of the space |
+| space | Space | Space object |
+| replyTo | string? | ID of the message being replied to |
+| reply | Message | Message object of the message being replied to |
+| replyMention | boolean | Should the response mention the user (by default is `false`) |
+| editedAt | DateTime? | An ISO-8601 timestamp when user edited the message |
+| createdAt | DateTime | An ISO-8601 timestamp when user sent message |
+
+### Create message
+
+<Badge text='POST' variant='note' size='medium' /> `/chats/{chat.id}/messages`
+
+Creates a new message in given chat. Returns a 201 response with created message object on success.
+
+**JSON params**
+
+| Field    | Type | Description |
+| -------- | ------- | ----------- |
+| content | string | Message content |
+| attachments | Attachment[] | Message attachments |
+
+Attachments should have a file name and file that is encoded in base64.
+
+Example:
+
+```json
+{
+  "content": "hello everyone!",
+  "attachments": [
+    "name": "test.jpg",
+    "file": "there should be a base64-encoded file"
+  ]
+}
+```
+
+### Get messages
+
+<Badge text="GET" variant="success" size="medium" /> `/chats/{chat.id}/messages`
+
+Returns portion of messages in given chat. Returns all messages if no query params provided.

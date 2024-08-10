@@ -42,6 +42,12 @@ export default defineConfig({
       }, {
         label: 'Chats',
         slug: 'resources/chats'
+      }, {
+        label: 'Members',
+        slug: 'resources/members'
+      },{
+        label: 'Messages',
+        slug: 'resources/messages'
       }]
     }]
   }), tailwind({

@@ -1,0 +1,14 @@
+---
+title: Invites
+---
+
+import { Badge } from '@astrojs/starlight/components';
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| code | string | Invite code |
+| spaceID | string | ID of the space, which the invite belong to |
+| space | Space | Space object |
+| inviterID | string? | Inviter's ID |
+| createdAt | DateTime | An ISO-8601 timestamp when user created the invite |
+| expiresAt | DateTime? | An ISO-8601 timestamp when the invitation expires (unrealized) |

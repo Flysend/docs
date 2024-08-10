@@ -43,7 +43,7 @@ Returns a chat object
 
 <Badge text='POST' variant='note' size='medium' /> `/chats/`
 
-Creates a new chat.
+Creates a new chat. Returns a 201 response with created chat object on success.
 
 **JSON params**
 
@@ -64,7 +64,7 @@ Type | Description |
 
 <Badge text='PATCH' variant='tip' size='medium' /> `/chats/{id}`
 
-Modifies the chat. The requester should be the owner of space to perform this action.
+Modifies the chat. The requester should be the owner of space to perform this action. Returns an updated chat object on success.
 
 **JSON params**
 

@@ -1,0 +1,65 @@
+---
+title: Members
+---
+
+import { Badge } from '@astrojs/starlight/components';
+
+# Structure
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| userID | string | An user ID |
+| user | User | An user |
+| nick | string? | An member's nick |
+| spaceID | string | A space ID |
+| space | Space | A space |
+| joinedAt | string | An ISO-8601 timestamp when member joined space |
+
+Example member object: 
+```json
+{
+  "id": 1,
+  "type": 1,
+  "userID": "189742982256279552",
+  "nick": null,
+  "spaceID": "189743571719569409",
+  "joinedAt": "2023-10-06T14:13:12.771Z",
+  "user": {
+      "id": "189742982256279552",
+      "username": "Ninjapp",
+      "handle": "ninjapp",
+      "avatar": "f4b986ad9350f905b9d57f5882370f62",
+      "createdAt": "2023-10-06T14:10:52.244Z"
+  }
+}
+```
+
+### Get all members
+
+<Badge text="GET" variant="success" size="medium" /> `/spaces/{space.id}/members`
+
+Returns all space members. The requester must be the member of this space to perform this action.
+
+### Get current member
+
+<Badge text="GET" variant="success" size="medium" /> `/spaces/{space.id}/members/@me`
+
+Returns requester's member object.
+
+### Get member
+
+<Badge text="GET" variant="success" size="medium" /> `/spaces/{space.id}/members/{user.id}`
+
+Returns member object for given user ID. 
+
+### Modify current member
+
+<Badge text="PATCH" variant="tip" size="medium" /> `/spaces/{space.id}/members/@me`
+
+Modifies requester's member object. Returns a modified member object on success.
+
+**JSON params**
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| nick | string? | A new nick. Pass null if you want to remove it |
