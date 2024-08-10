@@ -27,13 +27,13 @@ Example space object:
 }
 ```
 
-## Get space
+### Get space
 
 <Badge text='GET' variant='success' size='medium' /> `/spaces/{id}`
 
 Returns a space object if requester is the member of this space.
 
-## Create space
+### Create space
 
 <Badge text='POST' variant='note' size='medium' /> `/spaces/`
 
@@ -47,7 +47,7 @@ Creates a new space. Returns a new space object on success.
 | description | string? | New space description |
 
 
-## Modify space
+### Modify space
 
 <Badge text='PATCH' variant='tip' size='medium' /> `/spaces/{id}`
 
@@ -61,14 +61,48 @@ Modifies the space. Returns an updated space object on success.
 | description | string? | New space description |
 | icon | string? | New space icon, encoded in base64 |
 
-## Delete space
+### Delete space
 
 <Badge text='DELETE' variant='danger' size='medium' /> `/spaces/{id}`
 
 Deletes the space. The requester should be the owner of space to perform this action. Returns a 204 response on success.
 
-## Leave space
+### Leave space
 
 <Badge text='POST' variant='note' size='medium' /> `/spaces/{id}/leave`
 
 Leave a space. Returns a 204 response on success. Requester shouldn't be the owner of space to perform this action.
+
+## Invites
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| code | string | Invite code |
+| spaceID | string | ID of the space, which the invite belong to |
+| space | Space | Space object |
+| inviterID | string? | Inviter's ID |
+| createdAt | DateTime | An ISO-8601 timestamp when user created the invite |
+| expiresAt | DateTime? | An ISO-8601 timestamp when the invitation expires (unrealized) |
+
+### Create invite
+
+<Badge text='POST' variant='note' size='medium' /> `/spaces/{space.id}/invites`
+
+Creates a new invite code to given space.
+
+**Example invite:**
+```json
+{
+  "code": "evsw7IDqTB",
+  "spaceID": "262589398493888514",
+  "inviterID": "262587510306308096",
+  "createdAt": "2024-08-10T15:10:49.233Z",
+  "expires": null
+}
+```
+
+### Accept invite
+
+<Badge text='POST' variant='note' size='medium' /> `/invites/{invite.code}/accept`
+
+Joins the space if the invite code is valid. Well, nothing special ¯\\\_(ツ)_/¯
