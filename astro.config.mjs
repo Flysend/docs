@@ -15,6 +15,9 @@ export default defineConfig({
       dark: '/public/fsdocs-white.svg',
       replacesTitle: true
     },
+    social: {
+      github: 'https://github.com/Flysend'
+    },
     sidebar: [{
       label: 'Quick Start',
       items: [
